@@ -12,6 +12,7 @@
 
 html {
   box-sizing: border-box;
+  text-size-adjust: none;
 }
 *,
 *:before,
@@ -32,10 +33,15 @@ body.mobile-locked {
   overflow: hidden;
 }
 
-@media (width <= 680px) {
+@media (min-width: 680px) {
   body.mobile-locked {
     height: auto;
     overflow: visible;
+  }
+}
+@media (min-width: 680px) {
+  body {
+    margin: 0 60px;
   }
 }
 
@@ -119,6 +125,7 @@ code {
   border-radius: 3px;
 }
 pre {
+  margin: 0 -20px;
   padding: 20px;
   font-family: var(--monospace-fonts);
   font-size: 15px;
@@ -150,6 +157,8 @@ pre > code {
 
   pre {
     border-radius: 5px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   h1 {
@@ -165,4 +174,9 @@ pre > code {
   ul {
     padding-left: 30px;
   }
+
+}
+
+.no-transition {
+  transition: none !important;
 }

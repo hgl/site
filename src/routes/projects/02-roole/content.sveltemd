@@ -1,0 +1,19 @@
+---
+title: Roole
+description: A CSS preprocessing language
+techs:
+  - Node.js
+  - name: PEG
+    url: https://en.wikipedia.org/wiki/Parsing_expression_grammar
+url:
+  display: hgl.github.io/roole-doc
+  href: https://hgl.github.io/roole-doc/
+---
+
+Roole was my first deep dive into compiler architecture. I initially hand-wrote a parser, but eventually switched to using a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) (PEG) parser generator for better maintainability.
+
+It was also an early experiment in programming language design. While Roole is just a CSS preprocessing language, it’s powerful enough to be Turing complete.
+
+A notable feature is its built-in CSS auto-prefixing, predating tools like Autoprefixer.
+
+Roole was designed with a small core and a plugin architecture -- econceptually similar to how [the unified ecosystem](https://unifiedjs.com) is structured.

@@ -1,0 +1,17 @@
+---
+title: Nixverse
+description: Convention-over-configuration Nix framework
+techs:
+  - Nix
+  - Go
+  - SOPS
+url: https://github.com/hgl/nixverse
+---
+
+Setting up development environments—both globally for a system and locally for individual projects—is a common challenge in software engineering. In my view, Nix comes closest to an ideal solution, despite having its own quirks like any piece of software.
+
+However, Nix’s out-of-the-box user experience isn’t great. It tends to involve a lot of boilerplate. While its lazy evaluation model is theoretically well-suited for sharing configurations across multiple machines, in practice this is often difficult due to the way machine-specific configurations are structured.
+
+To address these issues, I designed an architecture where configurations are filesystem-based and machines can be managed collectively as groups. Thanks to this design, tasks like managing secrets and deploying machines in parallel become much simpler.
+
+All of my Nix configurations live in [a single codebase](https://github.com/hgl/configs), built on top of this framework.

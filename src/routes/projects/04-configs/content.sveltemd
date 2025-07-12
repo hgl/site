@@ -1,0 +1,16 @@
+---
+index: 1
+title: Configs
+description: One configuration system for all my devices
+techs:
+  - Nix
+  - Go
+  - SOPS
+url: https://github.com/hgl/configs
+---
+
+I use Nix to manage literally all my devices, and this single repository contains configurations for everything—routers, servers, personal computers, and more.
+
+Having a centralized configuration makes it much easier for these devices to interact seamlessly, which used to be a daunting task. For example, my routers use my servers as a repository mirror, and there’s only one place where each server’s domain is defined. I can set the domain value to a new one, deploy it to all machines in parallel, and have TLS certificates generated within seconds—all using Nix.
+
+Traditional configuration management tools like Ansible can’t match this speed or consistency, largely due to their imperative nature.

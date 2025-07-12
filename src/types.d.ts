@@ -10,12 +10,9 @@ declare global {
   }
 }
 
-declare module "*.md" {
+declare module "*.sveltemd" {
   import type { Component } from "svelte";
 
-  export { Component as default };
-
+  export { Componentas as default };
   export const metadata: Record<string, unknown>;
 }
-
-export {};

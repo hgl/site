@@ -1,5 +1,5 @@
 import { mdsvex, escapeSvelte } from "mdsvex";
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-cloudflare";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
@@ -15,12 +15,12 @@ const highlighter = await createHighlighter({
 const config = {
   // Consult https://svelte.dev/docs/kit/integrations
   // for more information about preprocessors
-  extensions: [".svelte", ".md"],
+  extensions: [".svelte", ".sveltemd"],
   preprocess: [
     vitePreprocess(),
     mdsvex({
-      extensions: [".md"],
-      remarkPlugins: [blogArticleStats],
+      extensions: [".sveltemd"],
+      remarkPlugins: [mdStats],
       highlight: {
         highlighter: async (code, lang = "text") => {
           const html = escapeSvelte(
@@ -39,22 +39,23 @@ const config = {
     files: {
       appTemplate: "src/site.html",
     },
-    alias: {
-      $components: "src/components",
-    },
   },
 };
 
 export default config;
 
-function blogArticleStats() {
+function mdStats() {
   return (tree, vFile) => {
     let text = "";
     visit(tree, ["text", "code"], (node) => {
       text += node.value;
     });
+    const { fm } = vFile.data;
+    if (!fm) {
+      return;
+    }
 
     const { time: readingTime, words: wordCount } = getReadingTime(text);
-    Object.assign(vFile.data.fm, { readingTime, wordCount });
+    Object.assign(fm, { readingTime, wordCount });
   };
 }

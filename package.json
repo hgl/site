@@ -1,5 +1,5 @@
 {
-  "name": "glenhuang",
+  "name": "site",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -11,13 +11,17 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
-    "lint": "prettier --check ."
+    "lint": "prettier --check .",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^6.0.0",
+    "@prgm/sveltekit-progress-bar": "^3.0.2",
+    "@sveltejs/adapter-cloudflare": "^7.0.5",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@types/node": "^24.0.10",
+    "@types/three": "^0.178.0",
+    "cssnano": "^7.0.7",
     "mdsvex": "^0.12.3",
     "postcss-preset-env": "^10.2.4",
     "prettier": "^3.4.2",
@@ -28,7 +32,8 @@
     "svelte-check": "^4.0.0",
     "typescript": "^5.0.0",
     "unist-util-visit": "^5.0.0",
-    "vite": "^6.2.6"
+    "vite": "^6.2.6",
+    "wrangler": "^4.24.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -37,6 +42,8 @@
   },
   "dependencies": {
     "esm-env": "^1.2.2",
-    "temporal-polyfill": "^0.3.0"
+    "sharp": "^0.34.3",
+    "temporal-polyfill": "^0.3.0",
+    "three": "^0.178.0"
   }
 }

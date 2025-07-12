@@ -1,0 +1,16 @@
+---
+title: Control Center for Safari
+description: Toolbox for Safari's current tab
+techs:
+  - WebExtensions APIs
+  - Svelte
+  - Swift
+  - SwiftUI
+url: https://glenhuang.com/control-center-for-safari
+---
+
+I often find myself wanting to perform simple, repetitive tasks while browsing—like scrolling to the top of a page, navigating up the URL hierarchy, or bypassing paywalls using services like archive.today. While individual extensions exist for most of these tasks, they’re usually too trivial to justify having their own dedicated button in the browser toolbar. On top of that, each extension tends to come with its own (often clunky) UI, which makes the experience feel inconsistent and visually jarring.
+
+So I decided to bring all of these functions together into a single Safari extension, designed with the native look and feel of macOS’s Control Center. This way, one toolbar icon becomes much more useful—offering multiple tools in a clean, familiar interface that feels like a natural part of the system.
+
+The extension UI and animations are built with Svelte, while the host app—required for Safari extensions—is implemented using Swift and SwiftUI.

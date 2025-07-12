@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
@@ -17,8 +17,13 @@
             packages = with pkgs; [
               nil
               nixfmt-rfc-style
-              nodejs_24
+              (pkgs.callPackage ./nodejs {
+                nixpkgsPath = nixpkgs.outPath;
+              })
+              nodePackages.svgo
               pnpm
+              mozjpeg
+              imagemagick
             ];
           in
           derivation {
