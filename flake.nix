@@ -13,13 +13,17 @@
       devShells = forAllSystems (system: {
         default =
           let
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = nixpkgs.legacyPackages.${system}.extend (
+              final: prev: {
+                nodejs = prev.callPackage ./nix/nodejs.nix {
+                  nixpkgsPath = nixpkgs.outPath;
+                };
+              }
+            );
             packages = with pkgs; [
               nil
               nixfmt-rfc-style
-              (pkgs.callPackage ./nodejs {
-                nixpkgsPath = nixpkgs.outPath;
-              })
+              nodejs
               nodePackages.svgo
               pnpm
               mozjpeg
