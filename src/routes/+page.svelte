@@ -6,13 +6,14 @@
 
   let canvas: HTMLCanvasElement;
   onMount(() => {
+    let minWidthMQ = window.matchMedia("(min-width: 680px)");
     return renderClouds({
       canvas,
-      desktopMediaQuery: window.matchMedia("(min-width: 680px)"),
+      desktopMediaQuery: minWidthMQ,
       size() {
         return {
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: document.documentElement.offsetWidth,
+          height: document.documentElement.offsetHeight,
         };
       },
     });
@@ -24,21 +25,24 @@
 </svelte:head>
 
 <canvas bind:this={canvas}></canvas>
-<div class="intro">
-  <p>Hello, I'm</p>
-  <img class="logo" src={logo} alt="Glen Huang" />
-  <p>
-    I'm a software engineer focused on web development, DevOps, and building
-    tools that boost developer productivity.
-  </p>
-
-  <nav>
-    <ul>
-      {#each links.slice(1) as link, i}
-        <li><a data-sveltekit-reload href={link.href}>{link.text}</a></li>
-      {/each}
-    </ul>
-  </nav>
+<div class="container">
+  <div class="intro">
+    <div class="content">
+      <p>Hello, I'm</p>
+      <img class="logo" src={logo} alt="Glen Huang" />
+      <p>
+        I'm a software engineer focused on web development, DevOps, and building
+        tools that boost developer productivity.
+      </p>
+    </div>
+    <nav>
+      <ul>
+        {#each links.slice(1) as link, i}
+          <li><a data-sveltekit-reload href={link.href}>{link.text}</a></li>
+        {/each}
+      </ul>
+    </nav>
+  </div>
 </div>
 
 <style>
@@ -50,26 +54,31 @@
     bottom: 0;
     z-index: -1;
   }
+  .container {
+    min-height: 100vh;
+    display: flex;
+  }
   .intro {
     color: #071c32;
-    position: absolute;
-    bottom: 20%;
-    left: 0;
-    right: 0;
     margin: 0 20px;
     max-width: 572px;
     font: 20px/1.2 var(--sans-serif-fonts);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    max-height: 340px;
   }
   .logo {
     display: block;
     width: 100%;
     aspect-ratio: 494 / 57;
+    margin: 20px 0 0;
   }
   p {
-    margin: 1em 0;
+    margin: 1em 0 0;
   }
   nav {
-    margin-top: 80px;
     ul {
       margin: 0 -20px;
       padding: 0;
@@ -96,8 +105,19 @@
   }
   @media (min-width: 715px) {
     .intro {
-      left: 10%;
-      right: auto;
+      margin-left: 10%;
+    }
+  }
+  @media (min-height: 340px) {
+    .intro {
+      margin-top: calc(50vh - 170px);
+    }
+  }
+  @media (min-height: 567px) {
+    .intro {
+      margin-top: auto;
+      height: 340px;
+      margin-bottom: 20vh;
     }
   }
 </style>
