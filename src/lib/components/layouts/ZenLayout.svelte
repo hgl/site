@@ -363,7 +363,7 @@
         justify-content: center;
         position: absolute;
         top: 30px;
-        left: 30px;
+        left: 60px;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -431,6 +431,24 @@
         font-size: 20px;
         padding: 20px;
         position: relative;
+      }
+    }
+  }
+  @media (min-width: 800px) {
+    .menu-toggler.desktop {
+      left: calc(50vw - 340px);
+    }
+  }
+  @media (min-width: 900px) {
+    .menu-toggler.desktop {
+      left: 30px;
+    }
+  }
+  @supports (padding: max(0px)) {
+    @media (min-width: 900px) {
+      .menu-toggler.desktop {
+        left: max(30px, env(safe-area-inset-left));
+        top: max(30px, env(safe-area-inset-top));
       }
     }
   }

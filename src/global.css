@@ -27,21 +27,35 @@ body {
   font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-}
-body.mobile-locked {
-  height: 100vh;
-  overflow: hidden;
+
+  &.mobile-locked {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 680px) {
-  body.mobile-locked {
-    height: auto;
-    overflow: visible;
+  body {
+    margin-left: 60px;
+    margin-right: 60px;
+
+    &.mobile-locked {
+      height: auto;
+      overflow: visible;
+    }
   }
 }
-@media (min-width: 680px) {
+
+@supports (padding: max(0px)) {
   body {
-    margin: 0 60px;
+    margin-left: max(20px, env(safe-area-inset-left));
+    margin-right: max(20px, env(safe-area-inset-right));
+  }
+  @media (min-width: 680px) {
+    body {
+      margin-left: max(60px, env(safe-area-inset-left));
+      margin-right: max(60px, env(safe-area-inset-right));
+    }
   }
 }
 
