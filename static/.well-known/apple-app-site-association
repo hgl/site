@@ -1,0 +1,25 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "PXY6ARKR3F.com.browsercc.Control-Center-for-Safari"
+        ],
+        "components": [
+          {
+            "/": "/control-center-for-safari/universal-links/*"
+          },
+          {
+            "/": "/control-center-for-safari/checkout",
+            "?": {
+              "product": "*"
+            }
+          },
+          {
+            "/": "/control-center-for-safari/restore-entitlements"
+          }
+        ]
+      }
+    ]
+  }
+}
